@@ -26,6 +26,6 @@ ReactDOM.render(
   <TodoList 
   	todos={todos}
   	onTodoClick={onTodoClick}
-  />,
+  />
   document.getElementById('root')
 );
