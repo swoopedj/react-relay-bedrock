@@ -1,21 +1,18 @@
-var browserify = require('browserify-middleware');
-var express = require('express');
-var Path = require('path');
+var browserify = require('browserify-middleware')
+var express = require('express')
+var Path = require('path')
+var babelify = require('babelify')
 
 var routes = express.Router()
 
+browserify.settings({
+  transform : ['babelify'],
+})
 //
 // Provide a browserified file at a specified path
 //
 routes.get('/app-bundle.js',
   browserify('./client/app.js'))
-
-//
-// Example endpoint (also tested in test/server/index_test.js)
-//
-routes.get('/api/tags-example', function(req, res) {
-  res.send(['node', 'express', 'browserify', 'mithril'])
-})
 
 //
 // Static assets (html, etc.)
@@ -41,7 +38,7 @@ if (process.env.NODE_ENV !== 'test') {
   var app = express()
 
   // Parse incoming request bodies as JSON
-  app.use( require('body-parser').json() )
+  // app.use( require('body-parser').json() )
 
   // Mount our main router
   app.use('/', routes)
