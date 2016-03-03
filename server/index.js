@@ -16,7 +16,7 @@ routes.get('/app-bundle.js',
   browserify('./client/app.js'))
 
 routes.get('/css/app-bundle.css',
-  sass.serve('./client/public/scss/app.scss'))
+  sass.serve('./client/public/sass/app.sass'))
 
 //
 // Static assets (html, etc.)
