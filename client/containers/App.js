@@ -17,20 +17,23 @@ var todos = [
 	},
 ];
 
-const App = ({onSubmit, onTodoClick, todos}) => (
-	<div>
-		<TodoList 
-	  	todos={todos}
-	  	onTodoClick={onTodoClick}
-	  />
-	  <AddTodo 
-	  	onSubmit={onSubmit}
-	  />
-  </div>
-)
+const App = ({onSubmit, onTodoClick, todos, isLoading}) => {
+	if(isLoading) return (<p>Loading</p>);
+	return (
+		<div>
+			<TodoList 
+		  	todos={todos}
+		  	onTodoClick={onTodoClick}
+		  />
+		  <AddTodo 
+		  	onSubmit={onSubmit}
+		  />
+	  </div>
+	) 
+};
 
 const mapStateToProps = (state) => {
-	return R.pick(['todos'], state);
+	return R.pick(['todos', 'isLoading'], state);
 }
 
 const mapDispatchToProps = (dispatch, props) => {
