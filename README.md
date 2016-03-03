@@ -9,6 +9,7 @@
 1. [Development](#development)
     1. [Environment Variables](#environment-variables)
     1. [Installing Dependencies](#installing-dependencies)
+    1. [Linting Setup](#linting-setup)
     1. [Tasks](#tasks)
 1. [Team](#team)
 1. [Contributing](#contributing)
@@ -29,15 +30,25 @@ export DATABASE_URL=postgres://user:pass@localhost
 ```
 
 ### Installing Dependencies & Running
-
 From within the root directory:
 
 ```sh
 npm install
 ```
 
-### Tasks
+### Linting Setup
+ESLint is used for linting as it plays nicely with React and JSX. Bedrock linting adheres to the [Airbnb Stlye Guide](https://github.com/airbnb/javascript) and the react plugin (*both are included as dev-dependencies*). The ESLint settings can be seen in ```.eslintrc.json```. 
+First, install ESLint globally:
+```sh
+npm install -g eslint
+```
+Next, add the following packages for integration with SublimeText. The easiest way to add these is via "**Package Control**":
+- [SublimeLinter](https://github.com/SublimeLinter/SublimeLinter3) Note: The github repository name is “SublimeLinter3”, but the plugin name remains “**SublimeLinter**.”
+- [SublimeLinter-eslint](https://github.com/roadhump/SublimeLinter-eslint)
 
+**Note: Restart Sublime Text!!!**
+
+### Tasks
 From within the root directory:
 
 ```sh
