@@ -1,11 +1,54 @@
-<html>
-<head>
-  <title>My App</title>
-</head>
-<body>
+<!doctype html>
 
-<div id="root"></div>
+<title>Texans Vote</title>
 
+<!-- Meta -->
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Styles -->
+<link rel="stylesheet" href="/css/app-bundle.css" />
+
+<!-- Layout -->
+<header class="header">
+  <div class="container">
+    <!-- Left side -->
+    <div class="header-left">
+      <a class="header-item" href="#" style="font-weight:bold;letter-spacing:2px;color:#555">
+        <img src="./img/bedrock-logo.png" alt="Logo">&nbsp;BEDROCK
+      </a>
+    </div>
+
+    <!-- Hamburger menu (on mobile) -->
+    <span class="header-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+
+    <!-- Right side -->
+    <div class="header-right header-menu">
+      <span class="header-item">
+        <a href="#">Nav item</a>
+      </span>
+      <span class="header-item">
+        <a href="#">Other nav item</a>
+      </span>
+      <span class="header-item">
+        <a class="button" href="#">Button</a>
+      </span>
+    </div>
+  </div>
+</header>
+
+<!-- App -->
+<section class="section">
+  <div class="container">
+    <div id="root"></div>
+  </div>
+</section>
+
+<!-- Scripts -->
 <script src="/app-bundle.js"></script>
-</body>
-</html>
