@@ -1,4 +1,5 @@
 # Bedrock
+[![Stories in Ready](https://badge.waffle.io/regolithed/react-bedrock.svg?label=ready&title=Ready)](http://waffle.io/regolithed/react-bedrock)
 
 > Bedrock is a React-Redux starter kit.
 
