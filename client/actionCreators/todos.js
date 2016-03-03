@@ -1,5 +1,20 @@
 
 let nextID = 0
+
+function fetchTodos(currentTime) {
+	return dispatch => {
+		dispatch(requestTodos(currentTime));
+		return 
+	}
+}
+
+function requestTodos (currentTime) {
+	return {
+		type : 'REQUEST_TODOS',
+		time : currentTime,
+	};
+}
+
 function addTodo(text) {
   return {
     type: 'ADD_TODO',
