@@ -1,49 +1,34 @@
-const createReducer = require('../lib/redux-helpers').createReducer;
+const R = require('ramda')
+const {createReducer, indexAndConcat} = require('../lib/redux-helpers');
 
 const todo = createReducer(undefined, {
-  'ADD_TODO' : (state, action) => {
-    id: action.id,
-    text: action.text,
-    completed: false
+  'ADD_TODO' : (todo, action) => {
+    return {
+        id: action.id,
+        text: action.text,
+        completed: false  
+    };
   },
-  'TOGGLE_TODO' : (state, action) => {
-    if (state.id !== action.id) {
-      return state
+  'TOGGLE_TODO' : (todo, action) => {
+    if (todo.id !== action.id) {
+      return todo
     }
-
-    return Object.assign({}, state, {
-      completed: !state.completed
-    })
+    return R.evolve({
+      completed : R.not,
+    }, todo);
   }
 });
-const todo = (state, action) => {
-  switch (action.type) {
-    case 'ADD_TODO':
-      return {
+ 
 
-      }
-    case 'TOGGLE_TODO':
-
-
-    default:
-      return state
+const todos = createReducer([], {
+  'ADD_TODO' : (todos, action) => {
+    return indexAndConcat(todo(undefined, action), todos);
+  },
+  'TOGGLE_TODO' : (todos, action) => {
+    return todos.map(t =>
+      todo(t, action)
+    );
   }
-}
-
-const todos = (state = [], action) => {
-  switch (action.type) {
-    case 'ADD_TODO':
-      return [
-        ...state,
-        todo(undefined, action)
-      ]
-    case 'TOGGLE_TODO':
-      return state.map(t =>
-        todo(t, action)
-      )
-    default:
-      return state
-  }
-}
+});
 
 module.exports = todos;
