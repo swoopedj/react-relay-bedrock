@@ -5,7 +5,7 @@ let thunkMiddleware = require('redux-thunk');
 module.exports = function(initialState) {
 	let store = createStore(
 		todoApp,
-		applyMiddleware(thunkMiddleware)
+		applyMiddleware(thunkMiddleware),
 	);
 	
 	return store;
