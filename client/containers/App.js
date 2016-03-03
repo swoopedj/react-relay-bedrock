@@ -1,7 +1,9 @@
 var React = require('react');
+var R = require('ramda');
 var connect = require('react-redux').connect;
 var TodoList = require('../components/TodoList');
 var AddTodo = require('../components/AddTodo');
+var actions = require('../actionCreators/todos');
 var todos = [
 	{
 		id : 1,
@@ -15,15 +17,7 @@ var todos = [
 	},
 ];
 
-var onTodoClick = function(id) {
-	console.log(id);
-}
-
-var onSubmit = function(inputValue) {
-	console.log(inputValue);
-}
-
-const App = () => (
+const App = ({onSubmit, onTodoClick, todos}) => (
 	<div>
 		<TodoList 
 	  	todos={todos}
@@ -35,15 +29,24 @@ const App = () => (
   </div>
 )
 
-const mapStateToProps = (dispatch, props) => {
+const mapStateToProps = (state) => {
+	return R.pick(['todos'], state);
+}
+
+const mapDispatchToProps = (dispatch, props) => {
 	return {
+		onSubmit : (value) => {
+			dispatch(actions.addTodo(value))
+		},
 		onTodoClick : (id) => {
-			dispatch()
+			dispatch(actions.toggleTodo(id))
 		}
 	};
 }
 
-const WrappedApp = 
+const WrappedApp = connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(App)
 
-
-module.exports = App;
+module.exports = WrappedApp;
