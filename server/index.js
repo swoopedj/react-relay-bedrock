@@ -48,9 +48,9 @@ if (process.env.NODE_ENV !== 'test') {
   app.use('/', routes)
 
   //This handles todo requests.
-  var todoRouter = require('./tasks/todoRoutes');
+  var todoRouter = require('./tasks/todoRoutes.js');
 
-  routes.use('/todo', todoRouter)
+  routes.use('/api/todos', todoRouter)
 
   // Start the server!
   var port = process.env.PORT || 4000

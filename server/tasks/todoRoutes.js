@@ -3,7 +3,7 @@ var Todo = require('./todoModel.js');
 //These handle all of the requests to the database.
 module.exports = function(app) {
 	app.get('/', function(req, res, next) {
-
+     
 	});
 	app.post('/', function(req, res, next) {
 		
