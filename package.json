@@ -11,12 +11,14 @@
     "babelify": "^7.2.0",
     "browserify-middleware": "^7.0.0",
     "express": "^4.13.4",
+    "isomorphic-fetch": "^2.2.1",
     "node-sass-endpoint": "^0.3.0",
     "ramda": "^0.19.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.0",
-    "redux": "^3.3.1"
+    "redux": "^3.3.1",
+    "redux-thunk": "^1.0.3"
   },
   "scripts": {
     "start": "node server/index.js"
