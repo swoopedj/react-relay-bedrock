@@ -9,10 +9,10 @@
 process.env.NODE_ENV = 'test'
 
 //set global variables for paths to client and server directories
-global.__server = __dirname + '../server'
-global.__client = __dirname + '../client'
+global.__server = __dirname + '/../server'
+global.__client = __dirname + '/../client'
 
-
+var routes = require(__server + '/index.js')
 //require chai
 var chai = require('chai');
 
@@ -38,6 +38,7 @@ TestHelper.createApp = function(loader){
 			next(err)
 		})
 	}
+	app.use('/',  routes);
 	return app
 };
 
@@ -51,6 +52,6 @@ global.beforeEach_ = function(f) {beforeEach(Bluebird.coroutine(f))}
 global.afterEach_ = function(f) {afterEach(Bluebird.coroutine(f))}
 global.it_ = function(description, f) { it (description, Bluebird.coroutine(f))}
 global.xit_ = function(description, f) {xit (description, f)}
-gloal.it_.only = function(description, f){ it.only(description, Bluebird.coroutine(f))}
+global.it_.only = function(description, f){ it.only(description, Bluebird.coroutine(f))}
 
 

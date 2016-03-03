@@ -1,22 +1,25 @@
-// require(TEST_HELPER)
-require('./testhelpers.js')
+require(TEST_HELPER)
+// require('../testhelpers.js')
 
 var request = require('supertest')
 var routes = require(__server + '/index.js')
 
+var chai = require('chai')
+// Option 1: Make the `expect` function available in every test file
+global.expect = chai.expect
 
 // => Drop created table?
-TestTodo.collection.drop
+// TestTodo.collection.drop
 
-beforeEach(function(done){
-	var newTodo = new Todo({
-		text: "Test text",
-		completed: false
-	});
-	newTodo.save(function(err){
-		done();
-	});
-});
+// beforeEach(function(done){
+// 	var newTodo = new Todo({
+// 		text: "Test text",
+// 		completed: false
+// 	});
+// 	newTodo.save(function(err){
+// 		done();
+// 	});
+// });
 
  
 
@@ -30,7 +33,7 @@ describe("The Server", function(){
 	it_('serves as an endpoint', function * (){
 
 		yield request(app)
-		  .get('/api/todo')  //Incorrect endpoint?
+		  .get('/api/todos')  //Incorrect endpoint?
 		  .expect(200)
 		  .expect(function(res) {
 		  	expect(res.body).to.include('node');
@@ -40,41 +43,41 @@ describe("The Server", function(){
 	})
 
 	//test for GET all todos
-	it_('should list ALL todos on /todos GET', function * (){
+	// it_('should list ALL todos on /todos GET', function * (){
 
-		yield request(app)
-		  .get('/api/todos')
-		  .expect(200)
-		  .expect(function(res){
-		  	expect(res).to.be.json;
-		  	expect(res.body).to.be.a('array');
-			expect(res.body[0]).to.have.property('text');
-		  	expect(res.body[0]).to.have.property('completed');
-		  	expect(res.body[0]).text.to.equal("Test text");
-		  	expect(res.body[0]).completed.to.equal(false);
+	// 	yield request(app)
+	// 	  .get('/api/todos')
+	// 	  .expect(200)
+	// 	  .expect(function(res){
+	// 	  	expect(res).to.be.json;
+	// 	  	expect(res.body).to.be.a('array');
+	// 		expect(res.body[0]).to.have.property('text');
+	// 	  	expect(res.body[0]).to.have.property('completed');
+	// 	  	expect(res.body[0]).text.to.equal("Test text");
+	// 	  	expect(res.body[0]).completed.to.equal(false);
 
-		  })
-	})
+	// 	  })
+	// })
 
 	//test for GET single todo
-	it_('should list a SINGLE todo on /todo GET', function * (){
-		var newTodo = new Todo({
-			text:'Test single todo',
-			completed: true
-		});
-		// newTodo.save()	//save newTodo to db?
+	// it_('should list a SINGLE todo on /todo GET', function * (){
+	// 	var newTodo = new Todo({
+	// 		text:'Test single todo',
+	// 		completed: true
+	// 	});
+	// 	// newTodo.save()	//save newTodo to db?
 
-		yield request(app)
-		  .get('/api/todo')  //add todoId to get request 
-		  .expect(200)
-		  .expect(function(res){
-			expect(res.body).to.have.property('text');
-		  	expect(res.body).to.have.property('completed');
-		  	expect(res.body).text.to.equal('Test single todo');
-		  	expect(res.body).completed.to.equal(true);
-		  	// expect(res.body).id.to.equal(??);
-		  })
-	})
+	// 	yield request(app)
+	// 	  .get('/api/todo')  //add todoId to get request 
+	// 	  .expect(200)
+	// 	  .expect(function(res){
+	// 		expect(res.body).to.have.property('text');
+	// 	  	expect(res.body).to.have.property('completed');
+	// 	  	expect(res.body).text.to.equal('Test single todo');
+	// 	  	expect(res.body).completed.to.equal(true);
+	// 	  	// expect(res.body).id.to.equal(??);
+	// 	  })
+	// })
 
 
 
@@ -83,6 +86,6 @@ describe("The Server", function(){
 	//test for DELETE a single todo
 
 
-})
+});
 
 

@@ -1,21 +1,32 @@
-var Todo = require('./todoModel.js');
+var Todo = require('./todosModel.js');
 
+var router = require('express').Router();
 //These handle all of the requests to the database.
-module.exports = function(app) {
-	app.get('/', function(req, res, next) {
-     
-	});
-	app.post('/', function(req, res, next) {
-		
-	});
-	app.delete('/:todo_id', function(req, res, next) {
 
-	});
-	app.put('/:todo_id', function(req, res, next) {
-
+	router.get('/', function(req, res, next) {
+     Todo.create(req.body)
+     .then(function(response) {
+     	console.log('Response in Server', response)
+     })
 	});
 
-};
+	router.post('/', function(req, res, next) {
+		Todo.create(req.body)
+    .then(function(response) {
+    console.log('Response in Server', response)
+    })
+	});
+
+	router.delete('/:todo_id', function(req, res, next) {
+
+	});
+
+	router.put('/:todo_id', function(req, res, next) {
+
+	});
+
+	module.exports = router;
+
 
 // GET 'api/todos'
 

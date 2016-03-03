@@ -9,7 +9,10 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "babelify": "^7.2.0",
+    "bluebird": "^3.3.3",
+    "body-parser": "^1.15.0",
     "browserify-middleware": "^7.0.0",
+    "chai": "^3.5.0",
     "express": "^4.13.4",
     "isomorphic-fetch": "^2.2.1",
     "node-sass-endpoint": "^0.3.0",
@@ -20,11 +23,15 @@
     "react-router": "^2.0.0",
     "react-router-redux": "^4.0.0",
     "redux": "^3.3.1",
-    "redux-thunk": "^1.0.3"
+    "redux-thunk": "^1.0.3",
+    "supertest": "^1.2.0",
+    "mocha": "^2.4.5",
+    "pg": "^4.5.1"
   },
   "scripts": {
     "start": "node server/index.js",
-    "lint": "./node_modules/.bin/eslint . --ext .js"
+    "lint": "./node_modules/.bin/eslint . --ext .js",
+    "test": "./test/run.sh"
   },
   "repository": {
     "type": "git",
