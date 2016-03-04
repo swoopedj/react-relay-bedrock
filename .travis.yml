@@ -9,6 +9,7 @@ before_script:
   - npm install -g knex
   - psql -c 'create database development;' -U postgres
   - npm run migrate
-addons: postgresql: "9.3"
+addons: 
+  postgresql: "9.3"
 services:
   - postgresql
