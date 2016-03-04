@@ -1,58 +1,53 @@
-var browserify = require('browserify-middleware')
-var express = require('express')
-var Path = require('path')
-var babelify = require('babelify')
-var sass = require('node-sass-endpoint')
+/* eslint new-cap: [2, {"capIsNewExceptions": ["express.Router"]}] */
+const browserify = require('browserify-middleware');
+const express = require('express');
+const Path = require('path');
+const sass = require('node-sass-endpoint');
+const routes = express.Router();
+const port = process.env.PORT || 4000;
+const app = express();
+const assetFolder = Path.resolve(__dirname, '../client/public');
 
-var routes = express.Router()
-
+// Add babel to browserify
 browserify.settings({
-  transform : ['babelify'],
-})
-//
-// Provide a browserified file at a specified path
-//
+  transform: ['babelify'],
+});
+
+// Provide browserified files at a specified paths
 routes.get('/app-bundle.js',
-  browserify('./client/app.js'))
+  browserify('./client/app.js'));
 
 routes.get('/css/app-bundle.css',
-  sass.serve('./client/public/sass/app.sass'))
+  sass.serve('./client/public/sass/app.sass'));
 
-//
 // Static assets (html, etc.)
-//
-var assetFolder = Path.resolve(__dirname, '../client/public')
-routes.use(express.static(assetFolder))
+routes.use(express.static(assetFolder));
 
 
 if (process.env.NODE_ENV !== 'test') {
-  //
-  // The Catch-all Route
-  // This is for supporting browser history pushstate.
-  // NOTE: Make sure this route is always LAST.
-  //
-  routes.get('/*', function(req, res){
-    res.sendFile( assetFolder + '/index.html' )
-  })
+  /**
+    * The Catch-all Route
+    * This is for supporting browser history pushstate.
+    * NOTE: Make sure this route is always LAST.
+  */
+  routes.get('/*', (req, res) => {
+    res.sendFile(`${assetFolder}/index.html`);
+  });
 
-  //
-  // We're in development or production mode;
-  // create and run a real server.
-  //
-  var app = express()
+  /**
+    * We're in development or production mode;
+    * create and run a real server.
+  */
 
   // Parse incoming request bodies as JSON
   // app.use( require('body-parser').json() )
 
   // Mount our main router
-  app.use('/', routes)
+  app.use('/', routes);
 
   // Start the server!
-  var port = process.env.PORT || 4000
-  app.listen(port)
-  console.log("Listening on port", port)
-}
-else {
+  app.listen(port);
+} else {
   // We're in test mode; make this file importable instead.
-  module.exports = routes
+  module.exports = routes;
 }
