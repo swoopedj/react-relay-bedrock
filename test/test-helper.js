@@ -1,5 +1,7 @@
 process.env.NODE_ENV = 'test'
 
+const dbCleaner = require('knex-cleaner')
+
 // The following allows you to require files independent of
 // the location of your test file.
 // Example:
@@ -15,7 +17,7 @@ var chai = require('chai')
 // Option 1: Make the `expect` function available in every test file
 global.expect = chai.expect
 // Option 2: Make everything should-able
-// global.should = chai.should()
+global.should = chai.should()
 
 
 //
@@ -23,7 +25,11 @@ global.expect = chai.expect
 //
 // This is the object you can attach any helper functions used across
 // several test files.
-global.TestHelper = {}
+global.TestHelper = {
+  emptyDb: function(db){
+    return dbCleaner.clean(db, {mode: 'truncate'})
+  }
+}
 
 //
 // Mock apps for API testing
