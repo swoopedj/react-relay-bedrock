@@ -1,5 +1,6 @@
 /* eslint new-cap: [2, {"capIsNewExceptions": ["express.Router"]}] */
 const browserify = require('browserify-middleware');
+const babelify = require('babelify');
 const express = require('express');
 const Path = require('path');
 const sass = require('node-sass-endpoint');
@@ -8,7 +9,16 @@ const port = process.env.PORT || 4000;
 const app = express();
 const assetFolder = Path.resolve(__dirname, '../client/public');
 
-// Add babel to browserify
+//This handles todo requests.
+var todoRouter = require('./tasks/todoRoutes.js');
+routes.use('/api/todos', todoRouter)
+
+routes.get('/api/todo-test', function(req, res) {
+  console.log("In server")
+  res.status(200).send(['node', 'express', 'browserify', 'mithril'])
+
+});
+
 browserify.settings({
   transform: ['babelify'],
 });
@@ -44,6 +54,10 @@ if (process.env.NODE_ENV !== 'test') {
 
   // Mount our main router
   app.use('/', routes);
+
+ 
+
+ 
 
   // Start the server!
   app.listen(port);
