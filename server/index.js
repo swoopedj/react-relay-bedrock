@@ -13,6 +13,12 @@ const assetFolder = Path.resolve(__dirname, '../client/public');
 var todoRouter = require('./tasks/todoRoutes.js');
 routes.use('/api/todos', todoRouter)
 
+routes.get('/api/todo-test', function(req, res) {
+  console.log("In server")
+  res.status(200).send(['node', 'express', 'browserify', 'mithril'])
+
+});
+
 browserify.settings({
   transform: ['babelify'],
 });

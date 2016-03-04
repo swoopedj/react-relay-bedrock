@@ -14,15 +14,15 @@ Todo.create = function(attrs) {
 };
 
 Todo.read = function(attrs) {
-  // return db('todos').select(*)
-  // .then(function(response) {
-  // 	console.log (response);
-  // 	return response;
-  // })
-  // .catch(function(error) {
-  // 	console.log('ERROR', error)
-  // 	return error;
-  // })
+  return db('todos').select(*)
+  .then(function(response) {
+  	console.log (response);
+  	return response;
+  })
+  .catch(function(error) {
+  	console.log('ERROR', error)
+  	return error;
+  })
 };
 
 Todo.update = function(attrs) {

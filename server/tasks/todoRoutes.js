@@ -4,7 +4,7 @@ var router = require('express').Router();
 //These handle all of the requests to the database.
 
 	router.get('/', function(req, res, next) {
-     Todo.create(req.body)
+     Todo.read(req.body)
      .then(function(response) {
      	console.log('Response in Server', response)
      })
