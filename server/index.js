@@ -10,7 +10,7 @@ const app = express();
 const assetFolder = Path.resolve(__dirname, '../client/public');
 
 //This handles todo requests.
-var todoRouter = require('./tasks/todoRoutes.js');
+var todoRouter = require('./apis/todo-api.js');
 routes.use('/api/todos', todoRouter)
 
 routes.get('/api/todo-test', function(req, res) {
