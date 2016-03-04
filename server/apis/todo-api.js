@@ -1,19 +1,21 @@
 var Todo = require('../models/todos.js');
-
 var router = require('express').Router();
 //These handle all of the requests to the database.
 
 	router.get('/', function(req, res, next) {
-     Todo.read(req.body)
-     .then(function(response) {
-     	console.log('Response in Server', response)
+     Todo.read()
+     .then(function(todos) {
+     		res.json({todos});
      })
 	});
 
 	router.post('/', function(req, res, next) {
-		Todo.create(req.body)
-    .then(function(response) {
-    console.log('Response in Server', response)
+		console.log(req);
+		var todo = req.body;
+		todo['completed'] = false;
+		Todo.create(todo)
+    .then(function(todo) {
+    	res.json({todo});
     })
 	});
 
