@@ -1,4 +1,4 @@
-const db = require('../../lib/db');
+const db = require('../lib/db');
 const Todo = module.exports;
 
 Todo.create = function(attrs) {
@@ -14,7 +14,7 @@ Todo.create = function(attrs) {
 };
 
 Todo.read = function(attrs) {
-  return db('todos').select(*)
+  return db('todos').select('*')
   .then(function(response) {
   	console.log (response);
   	return response;

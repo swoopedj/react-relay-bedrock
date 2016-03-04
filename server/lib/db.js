@@ -1,5 +1,5 @@
 //requires knexfile
-const config = require('../knexfile');
+const config = require('../../knexfile');
 //sets environment to either NODE_ENV or development
 const env = process.env.NODE_ENV || 'development';
 //sets up postgres with knex and the environment

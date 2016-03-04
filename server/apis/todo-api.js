@@ -1,4 +1,4 @@
-var Todo = require('./todosModel.js');
+var Todo = require('../models/todos.js');
 
 var router = require('express').Router();
 //These handle all of the requests to the database.
