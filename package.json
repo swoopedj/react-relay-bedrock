@@ -34,7 +34,7 @@
     "start": "node server/index.js",
     "lint": "./node_modules/.bin/eslint . --ext .js",
     "test": "./test/run.sh",
-    "migrate": "knex migrate:latest"
+    "migrate": "knex migrate:latest --env test"
   },
   "repository": {
     "type": "git",
