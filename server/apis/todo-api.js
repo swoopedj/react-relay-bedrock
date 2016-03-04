@@ -18,20 +18,11 @@ var router = require('express').Router();
 	});
 
 	router.delete('/:todo_id', function(req, res, next) {
-
+		
 	});
 
 	router.put('/:todo_id', function(req, res, next) {
 
 	});
 
-	module.exports = router;
-
-
-// GET 'api/todos'
-
-// POST 'api/todos'
-
-// PUT 'api/todos/:todo_id
-
-// DELELE 'api/todos/:todo_id
+module.exports = router;
