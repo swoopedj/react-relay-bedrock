@@ -50,11 +50,11 @@ if (process.env.NODE_ENV !== 'test') {
   */
 
   // Parse incoming request bodies as JSON
-  // app.use( require('body-parser').json() )
+  app.use( require('body-parser').json() )
 
   // Mount our main router
   app.use('/', routes);
-
+  
  
 
  

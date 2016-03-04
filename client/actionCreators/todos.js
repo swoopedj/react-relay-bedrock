@@ -1,29 +1,5 @@
-let nextID = 2;
-
-function fakeInsertNewTodo() {
-  return new Promise((resolve) => {
-    setTimeout(() => { resolve(nextID++); }, 500);
-  });
-}
-
-function fakeFetch() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve([
-        {
-          id: 0,
-          text: 'First Todo',
-          completed: false,
-        },
-        {
-          id: 1,
-          text: 'Second Todo',
-          completed: true,
-        },
-      ]);
-    }, 500);
-  });
-}
+require('es6-promise').polyfill();
+const fetch = require('isomorphic-fetch');
 
 function requestTodos() {
   return {
@@ -49,8 +25,12 @@ function receiveTodos(todos) {
 function fetchTodos(currentTime) {
   return dispatch => {
     dispatch(requestTodos(currentTime));
-    return fakeFetch().then(todos => {
-      dispatch(receiveTodos(todos));
+    return fetch('/api/todos').then(function(response){
+    	return response.json();
+    }).then(response => {
+      dispatch(receiveTodos(response.todos));
+    }).catch(function(error){
+    	console.log(error);
     });
   };
 }
@@ -64,10 +44,22 @@ function receiveNewTodo(id) {
 }
 
 function addTodo(value) {
+	var todo = {
+		text : value,
+	};
   return dispatch => {
     dispatch(requestNewTodo(value));
-    return fakeInsertNewTodo().then(id => {
-      dispatch(receiveNewTodo(id));
+    return fetch('/api/todos', {
+    	method : 'post',
+    	headers: {
+    		'Accept': 'application/json',
+    		'Content-Type': 'application/json'
+  		},
+    	body : JSON.stringify(todo),
+    }).then(function(response){
+    	return response.json();
+    }).then(response => {
+      dispatch(receiveNewTodo(response.todo.id));
     });
   };
 }
