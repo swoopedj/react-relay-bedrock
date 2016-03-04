@@ -10,11 +10,6 @@ describe("The Server", function() {
   app.testReady()
 
   it_("serves an example endpoint", function * () {
-
-    //
-    // Notice how we're in a generator function (indicated by the the *)
-    // See test/test-helper.js for details of why this works.
-    //
     yield request(app)
       .get('/api/todo-test')
       .expect(200)

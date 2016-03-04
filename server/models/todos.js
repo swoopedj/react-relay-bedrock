@@ -26,9 +26,9 @@ Todo.read = function(attrs) {
 };
 
 Todo.update = function(attrs) {
-
+	
 };
 
 Todo.remove = function(attrs) {
-
+	
 };
