@@ -1,12 +1,11 @@
-const R = require('ramda')
-const {createReducer} = require('../lib/redux-helpers');
+const { createReducer } = require('../lib/redux-helpers');
 
 const isLoading = createReducer(false, {
-	'REQUEST_TODOS' : (state, action) => {
+  REQUEST_TODOS: () => {
     return true;
   },
-  'RECEIVE_TODOS' : (state, action) => {
-  	return false;
+  RECEIVE_TODOS: () => {
+    return false;
   },
 });
 

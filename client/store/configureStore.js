@@ -1,12 +1,8 @@
-let todoApp = require('../reducers/todoApp');
-let {createStore, applyMiddleware} = require('redux');
-let thunkMiddleware = require('redux-thunk');
+const todoApp = require('../reducers/todoApp');
+const { createStore, applyMiddleware } = require('redux');
+const thunkMiddleware = require('redux-thunk');
 
-module.exports = function(initialState) {
-	let store = createStore(
-		todoApp,
-		applyMiddleware(thunkMiddleware),
-	);
-	
-	return store;
-}
+module.exports = () => {
+  const store = createStore(todoApp, applyMiddleware(thunkMiddleware));
+  return store;
+};

@@ -1,26 +1,31 @@
-var React = require('react');
+const React = require('react');
 
-const AddTodo = ({onSubmit}) => {
-  let input
+// FIXME: ESLint
+const AddTodo = ({ onSubmit }) => {
+  let input;
   return (
     <div>
+      {/* FIXME: ESLint */}
       <form onSubmit={e => {
-        e.preventDefault()
+        e.preventDefault();
         if (!input.value.trim()) {
-          return
+          return;
         }
         onSubmit(input.value);
-        input.value = ''
-      }}>
+        input.value = '';
+      }}
+      >
+        {/* FIXME: ESLint */}
         <input ref={node => {
-          input = node
-        }} />
+          input = node;
+        }}
+        />
         <button type="submit">
           Add Todo
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
 module.exports = AddTodo;

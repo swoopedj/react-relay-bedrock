@@ -1,11 +1,11 @@
-var todos = require('./todos');
-var isLoading = require('./isLoading');
-var combineReducers = require('redux').combineReducers;
-let { routerReducer } = require('react-router-redux');
+const todos = require('./todos');
+const isLoading = require('./isLoading');
+const combineReducers = require('redux').combineReducers;
+const { routerReducer } = require('react-router-redux');
 
 const todoApp = combineReducers({
   todos,
   isLoading,
-  routing : routerReducer,
+  routing: routerReducer,
 });
 module.exports = todoApp;
