@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "node server/index.js",
-    "lint": "./node_modules/.bin/eslint **.js"
+    "lint": "./node_modules/.bin/eslint *.js"
   },
   "repository": {
     "type": "git",
