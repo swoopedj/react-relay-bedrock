@@ -20,6 +20,10 @@ module.exports = {
       port: 5432,
       database: 'test',
     },
+    migrations: {
+      directory: './server/lib/migrations',
+      tableName: 'knex_migrations',
+    },
     debug: false, // set true for verbose database operations
   },
 };
