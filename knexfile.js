@@ -4,7 +4,7 @@ module.exports = {
     connection: {
       host: 'localhost',
       port: 5432,
-      database: 'bedrock_dev',
+      database: 'development',
     },
     migrations: {
       directory: './server/lib/migrations',
