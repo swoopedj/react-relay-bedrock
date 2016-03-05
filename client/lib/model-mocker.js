@@ -1,11 +1,15 @@
-const ModelMocker = ({ mocks, delay = 500, errors}) => {
+const _ = require('underscore');
+const ModelMocker = ({ mocks = [], delay = 500, errors = {}}) => {
   let mocker = {};
-  let state = {};
+  var state = {
+    mocks : mocks,
+  };
 
   const getPromise = (name, func, args) => {
+    console.log(name);
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (errors.hasOwnProperty(name)) reject(errors[name]);
+        if (_.has(errors, name)) reject(errors[name]);
         resolve(func.apply(args));
       }, delay);
     });
@@ -15,14 +19,19 @@ const ModelMocker = ({ mocks, delay = 500, errors}) => {
     mocker[name] = () => {
       let args = arguments;
       return getPromise(name, func, args);
-    }
+    };
   };
 
   bindFunction('create', (newItem) => {
-    state.push(newItem);
+    state.mocks.push(newItem);
+    console.log(newItem);
     return newItem;
   });
+
+  return mocker;
 };
+
+
 
 
 
