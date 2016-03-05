@@ -19,6 +19,8 @@ const routes = require(`${__server}/index`);
 
 //
 // Assertions
+//
+
 // Option 1: Make the `expect` function available in every test file
 global.expect = chai.expect;
 // Option 2: Make everything should-able
