@@ -73,6 +73,9 @@ function toggleTodo(id) {
 
 module.exports = {
   addTodo,
+  requestNewTodo,
+  receiveNewTodo,
+  receiveTodos,
   toggleTodo,
   fetchTodos,
 };
