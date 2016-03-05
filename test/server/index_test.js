@@ -31,16 +31,16 @@
 // 			yield request(app)
 // 			  .post('/api/todos')
 // 			  .expect(300)
-			 //  .expect(function(res){
-			 //  	expect(res).to.be.json;
-			 //  	expect(res.body).to.be.a('array');
+       //  .expect(function(res){
+       //  	expect(res).to.be.json;
+       //  	expect(res.body).to.be.a('array');
 				// expect(res.body[0]).to.have.property('text');
-			 //  	expect(res.body[0]).to.have.property('completed');
-			 //  	expect(res.body[0]).text.to.equal("Test text");
-			 //  	expect(res.body[0]).completed.to.equal(false);
+       //  	expect(res.body[0]).to.have.property('completed');
+       //  	expect(res.body[0]).text.to.equal("Test text");
+       //  	expect(res.body[0]).completed.to.equal(false);
 
-			 //  })
-		//})
+      //  })
+		// })
 
 	// it_('should list ALL todos on /todos GET', function * (){
 
@@ -58,7 +58,7 @@
 	// 	 //  })
 	// })
 
-	//test for GET single todo
+	// test for GET single todo
 	// it_('should list a SINGLE todo on /todo GET', function * (){
 	// 	var newTodo = new Todo({
 	// 		text:'Test single todo',
@@ -67,7 +67,7 @@
 	// 	// newTodo.save()	//save newTodo to db?
 
 	// 	yield request(app)
-	// 	  .get('/api/todo')  //add todoId to get request 
+	// 	  .get('/api/todo')  //add todoId to get request
 	// 	  .expect(200)
 	// 	  .expect(function(res){
 	// 		expect(res.body).to.have.property('text');

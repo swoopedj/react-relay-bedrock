@@ -2,7 +2,7 @@ const R = require('ramda');
 const { createReducer, indexAndConcat } = require('../lib/redux-helpers');
 
 // FIXME: ESLint
-const todo = createReducer(undefined, {
+const todoState = createReducer(undefined, {
   REQUEST_NEW_TODO: (todo, action) => {
     return {
       id: action.id,
@@ -26,23 +26,25 @@ const todo = createReducer(undefined, {
   },
 });
 
-const todos = createReducer([], {
+const todosState = createReducer([], {
   RECEIVE_TODOS: (state, action) => {
     return action.todos.slice();
   },
   REQUEST_NEW_TODO: (todos, action) => {
-    return indexAndConcat(todo(undefined, action), todos);
+    return indexAndConcat(todoState(undefined, action), todos);
   },
   TOGGLE_TODO: (todos, action) => {
-    return todos.map(t =>
-      todo(t, action)
+    return todos.map(t => {
+      return todoState(t, action);
+    }
     );
   },
   RECEIVE_NEW_TODO: (todos, action) => {
-    return todos.map(t =>
-      todo(t, action)
+    return todos.map(t => {
+      return todoState(t, action);
+    }
     );
   },
 });
 
-module.exports = todos;
+module.exports = todosState;

@@ -1,6 +1,6 @@
-process.env.NODE_ENV = 'test'
+process.env.NODE_ENV = 'test';
 
-const dbCleaner = require('knex-cleaner')
+const dbCleaner = require('knex-cleaner');
 
 
 // The following allows you to require files independent of
@@ -8,18 +8,18 @@ const dbCleaner = require('knex-cleaner')
 // Example:
 //  var User = require(__server + '/models/user.js')
 //
-global.__server = __dirname + '/../server'
-global.__client = __dirname + '/../client'
+global.__server = __dirname + '/../server';
+global.__client = __dirname + '/../client';
 const routes = require(__server + '/index');
 
 //
 // Assertions
 //
-var chai = require('chai')
+var chai = require('chai');
 // Option 1: Make the `expect` function available in every test file
-global.expect = chai.expect
+global.expect = chai.expect;
 // Option 2: Make everything should-able
-global.should = chai.should()
+global.should = chai.should();
 
 
 //
@@ -29,7 +29,7 @@ global.should = chai.should()
 // several test files.
 global.TestHelper = {
   emptyDb: function(db){
-    return dbCleaner.clean(db, {mode: 'truncate'})
+    return dbCleaner.clean(db, {mode: 'truncate'});
   }
 }
 
