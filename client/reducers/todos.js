@@ -27,7 +27,7 @@ const todo = createReducer(undefined, {
 });
 
 const todos = createReducer([], {
-  RECEIVE_TODOS: (todos, action) => {
+  RECEIVE_TODOS: (state, action) => {
     return action.todos.slice();
   },
   REQUEST_NEW_TODO: (todos, action) => {
