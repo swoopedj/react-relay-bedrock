@@ -2,6 +2,7 @@ process.env.NODE_ENV = 'test'
 
 const dbCleaner = require('knex-cleaner')
 
+
 // The following allows you to require files independent of
 // the location of your test file.
 // Example:
@@ -9,6 +10,7 @@ const dbCleaner = require('knex-cleaner')
 //
 global.__server = __dirname + '/../server'
 global.__client = __dirname + '/../client'
+const routes = require(__server + '/index');
 
 //
 // Assertions
@@ -42,12 +44,16 @@ TestHelper.createApp = function (loader) {
 
   app.testReady = function () {
     // Log all errors
-    app.use(function (err, req, res, next) {
+    routes.use(function (err, req, res, next) {
       console.error("==Error==")
       console.error("   " + err.stack)
       next(err)
     })
+    app.use('/', routes);
   }
+
+  app.testReady();
+
   return app
 }
 

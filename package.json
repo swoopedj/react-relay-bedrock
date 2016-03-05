@@ -30,6 +30,8 @@
     "react-router-redux": "^4.0.0",
     "redux": "^3.3.1",
     "redux-thunk": "^1.0.3",
+    "sinon": "^1.17.3",
+    "sinon-as-promised": "^4.0.0",
     "supertest": "^1.2.0"
   },
   "scripts": {

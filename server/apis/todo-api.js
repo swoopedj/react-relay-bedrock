@@ -10,7 +10,6 @@ var router = require('express').Router();
 	});
 
 	router.post('/', function(req, res, next) {
-		console.log(req);
 		var todo = req.body;
 		todo['completed'] = false;
 		Todo.create(todo)
