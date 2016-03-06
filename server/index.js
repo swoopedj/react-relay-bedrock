@@ -9,14 +9,13 @@ const port = process.env.PORT || 4000;
 const app = express();
 const assetFolder = Path.resolve(__dirname, '../client/public');
 
-//This handles todo requests.
-var todoRouter = require('./apis/todo-api.js');
-routes.use('/api/todos', todoRouter)
+// This handles todo requests.
+const todoRouter = require('./apis/todo-api.js');
+routes.use('/api/todos', todoRouter);
 
-routes.get('/api/todo-test', function(req, res) {
-  console.log("In server")
-  res.status(200).send(['node', 'express', 'browserify', 'mithril'])
-
+routes.get('/api/todo-test', (req, res) => {
+  console.log('In server');
+  res.status(200).send(['node', 'express', 'browserify', 'mithril']);
 });
 
 browserify.settings({
@@ -50,14 +49,9 @@ if (process.env.NODE_ENV !== 'test') {
   */
 
   // Parse incoming request bodies as JSON
-  app.use( require('body-parser').json() )
-
+  app.use(require('body-parser').json());
   // Mount our main router
   app.use('/', routes);
-  
- 
-
- 
 
   // Start the server!
   app.listen(port);

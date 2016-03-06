@@ -1,29 +1,29 @@
-var Todo = require('../models/todos.js');
-var router = require('express').Router();
-//These handle all of the requests to the database.
+/* eslint new-cap: [2, {"capIsNewExceptions": ["Router"]}] */
+const Todo = require('../models/todos.js');
+const router = require('express').Router();
+// These handle all of the requests to the database.
 
-	router.get('/', function(req, res, next) {
-     Todo.read()
-     .then(function(todos) {
-     		res.json({todos});
-     })
+	router.get('/', (req, res) => {
+  Todo.read()
+     .then((todos) => {
+       res.json({ todos });
+     });
 	});
 
-	router.post('/', function(req, res, next) {
-		var todo = req.body;
-		todo['completed'] = false;
-		Todo.create(todo)
-    .then(function(todo) {
-    	res.json({todo});
-    })
+	router.post('/', (req, res) => {
+  const todo = req.body;
+  todo.completed = false;
+  Todo.create(todo)
+    .then((returnedTodo) => {
+      res.json({ returnedTodo });
+    });
 	});
 
-	router.delete('/:todo_id', function(req, res, next) {
-		
-	});
+	// router.delete('/:todo_id', (req, res) => {
+	// });
 
-	router.put('/:todo_id', function(req, res, next) {
+	// router.put('/:todo_id', (req, res) => {
 
-	});
+	// });
 
 module.exports = router;
