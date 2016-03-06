@@ -32,7 +32,7 @@ describe('The model mocker', () => {
     expect(readTodos[0]).to.contain({ text: 'one', id: 0 });
     expect(readTodos[1]).to.contain({ text: 'two', id: 1 });
   });
-  it_.only('should be able to filter read results', function * generator() {
+  it_('should be able to filter read results', function * generator() {
     const readTodos = yield Todo.read(item => item.text === 'two');
     expect(readTodos[0]).to.contain({ text: 'two', id: 1 });
   });

@@ -8,7 +8,7 @@ const createReducer = (initialState, handlers) => {
 let indexAndConcat = (item, array, index = array.length) => {
   return R.compose(
 		R.concat(array),
-		R.assoc('id', index)
+		R.assoc('index', index)
 	)(item);
 };
 
