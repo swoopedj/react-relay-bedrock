@@ -3,7 +3,6 @@
 require(TEST_HELPER);
 const todosReducer = require(`${__client}/reducers/todos`);
 const { requestNewTodo, receiveNewTodo } = require(`${__client}/actionCreators/todos`);
-
 describe('The Todos Reducer', () => {
   it('adds a new todo on requestNewTodo', () => {
     const state = todosReducer(undefined, requestNewTodo('test'));
