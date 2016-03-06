@@ -32,7 +32,11 @@ describe('The model mocker', () => {
     expect(readTodos[0]).to.contain({ text: 'one', id: 0 });
     expect(readTodos[1]).to.contain({ text: 'two', id: 1 });
   });
-  it_.only('updates an item', function * generator() {
+  it_.only('should be able to filter read results', function * generator() {
+    const readTodos = yield Todo.read(item => item.text === 'two');
+    expect(readTodos[0]).to.contain({ text: 'two', id: 1 });
+  });
+  it_('updates an item', function * generator() {
     const updatedItem = yield Todo.update(0, { text: 'updated' });
     expect(updatedItem).to.contain({ id: 0, text: 'updated' });
     const readTodos = yield Todo.read();
@@ -42,7 +46,6 @@ describe('The model mocker', () => {
     const deletedID = yield Todo.delete(0);
     expect(deletedID).to.equal(0);
     const readTodos = yield Todo.read();
-    console.log(readTodos);
     expect(readTodos[0]).to.contain({ text: 'two' });
   });
 });
