@@ -5,10 +5,10 @@ const createReducer = (initialState, handlers) => {
     R.propOr(R.identity, action.type, handlers)(state, action);
 };
 
-let indexAndConcat = (item, array) => {
+let indexAndConcat = (item, array, index = array.length) => {
   return R.compose(
 		R.concat(array),
-		R.assoc('index', array.length)
+		R.assoc('id', index)
 	)(item);
 };
 
